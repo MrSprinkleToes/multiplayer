@@ -1,5 +1,6 @@
 import "./style.css";
 
+const socket = io();
 const canvas = document.getElementById("c");
 const ctx = canvas.getContext("2d");
 
