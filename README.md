@@ -1,2 +1,2 @@
 # Multiplayer game
-Javascript multiplayer game using Node.js.
+Javascript multiplayer game using Node.js. *Work in progress!*
