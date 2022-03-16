@@ -1,3 +1,5 @@
+import { players } from "../Players";
+
 var objects = [];
 /**
  * Updates all objects in the game.
@@ -13,8 +15,16 @@ function updateObjects(dt) {
  * @param {CanvasRenderingContext2D} ctx The 2D rendering context
  */
 function renderObjects(ctx) {
-	for (var i = 0; i < objects.length; i++) {
+	for (let i = 0; i < objects.length; i++) {
 		objects[i]._render(ctx);
+	}
+
+	for (let id in players) {
+		var p = players[id];
+		ctx.save();
+		ctx.fillStyle = "lime";
+		ctx.fillRect(p.x - 20, p.y - 20, 40, 40);
+		ctx.restore();
 	}
 }
 

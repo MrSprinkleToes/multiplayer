@@ -2,7 +2,7 @@
  * @class Vector2
  * A 2D vector class. Implements some basic vector operations.
  */
-export default class Vector2 {
+ exports.Vector2 = class Vector2 { // TODO: one shared vector2 class between client and server?
 	/**
 	 * Constructs a new Vector2.
 	 * @param {number} x The x component of the vector
@@ -41,13 +41,5 @@ export default class Vector2 {
 		var mag = this.mag();
 		this.x /= mag;
 		this.y /= mag;
-	}
-
-	limit(max) {
-		var mag = this.mag();
-		if (mag > max) {
-			this.normalize();
-			this.mult(max);
-		}
 	}
 }

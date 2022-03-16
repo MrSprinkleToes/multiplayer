@@ -1,7 +1,8 @@
 import "./style.css";
 import { updateObjects, renderObjects } from "./classes/GObj";
-import Tank from "./classes/Tank";
 import Vector2 from "./util/Vector2";
+import Player from "./classes/Player";
+import { init } from "./Players";
 
 const socket = io();
 const canvas = document.getElementById("c");
@@ -10,7 +11,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 ctx.fillStyle = "black";
 
-var tank = new Tank(new Vector2(canvas.width / 2, canvas.height / 2));
+var plr = new Player(new Vector2(canvas.width / 2, canvas.height / 2), socket);
+init(socket);
 
 var lastTime = performance.now();
 /**

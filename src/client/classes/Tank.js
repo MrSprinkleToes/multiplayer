@@ -18,12 +18,10 @@ export default class Tank extends GObj {
 		this.maxSpeed = 5;
 	}
 
-	update(dt) {
-		this.rotation += 20 * dt; // testing rotation & delta time
-	}
-
 	render(ctx) {
 		ctx.fillStyle = this.color;
 		ctx.fillRect(-20, -20, 40, 40);
+
+		ctx.fillText(`${this.velocity.x}, ${this.velocity.y}`, 20, 20);
 	}
 }
