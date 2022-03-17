@@ -18,6 +18,12 @@ io.on("connection", (socket) => {
 	players[socket.id] = {
 		position: new Vector2.Vector2(0, 0)
 	};
+	for (let id in players) {
+		if (id !== socket.id) {
+			socket.emit("join", id);
+		}
+	}
+	socket.broadcast.emit("join", socket.id);
 	socket.on("disconnect", () => {
 		console.log("disconnect");
 		socket.broadcast.emit("leave", socket.id);

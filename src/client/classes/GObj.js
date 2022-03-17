@@ -1,5 +1,3 @@
-import { players } from "../Players";
-
 var objects = [];
 /**
  * Updates all objects in the game.
@@ -14,7 +12,7 @@ function updateObjects(dt) {
  * Renders all objects in the game.
  * @param {CanvasRenderingContext2D} ctx The 2D rendering context
  */
-function renderObjects(ctx) {
+function renderObjects(ctx, players) {
 	for (let i = 0; i < objects.length; i++) {
 		objects[i]._render(ctx);
 	}
@@ -54,6 +52,13 @@ export default class GObj {
 		ctx.rotate(this.rotation * Math.PI / 180);
 		this.render(ctx);
 		ctx.restore();
+	}
+
+	destroy() {
+		var index = objects.indexOf(this);
+		if (index > -1) {
+			objects.splice(index, 1);
+		}
 	}
 
 	update() {} // subclasses should override this

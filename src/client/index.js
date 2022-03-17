@@ -2,7 +2,7 @@ import "./style.css";
 import { updateObjects, renderObjects } from "./classes/GObj";
 import Vector2 from "./util/Vector2";
 import Player from "./classes/Player";
-import { init } from "./Players";
+import { init, players } from "./Players";
 
 const socket = io();
 const canvas = document.getElementById("c");
@@ -28,7 +28,7 @@ function gameLoop(t) {
 	// console.log(dt);
 	if (!isNaN(dt)) {
 		updateObjects(dt);
-		renderObjects(ctx);
+		renderObjects(ctx, players);
 	}
 	requestAnimationFrame(gameLoop);
 }
