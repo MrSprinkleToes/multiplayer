@@ -16,7 +16,8 @@ var players = {};
 io.on("connection", (socket) => {
 	console.log("connect");
 	players[socket.id] = {
-		position: new Vector2.Vector2(0, 0)
+		position: new Vector2.Vector2(0, 0),
+		rotation: 0
 	};
 	for (let id in players) {
 		if (id !== socket.id) {
@@ -29,8 +30,9 @@ io.on("connection", (socket) => {
 		socket.broadcast.emit("leave", socket.id);
 		delete players[socket.id];
 	});
-	socket.on("update_pos", (pos) => {
+	socket.on("update_plr", (pos, rot) => {
 		players[socket.id].position = pos;
+		players[socket.id].rotation = rot;
 	});
 });
 

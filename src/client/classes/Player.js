@@ -16,7 +16,7 @@ export default class Player extends Tank {
 		});
 	}
 
-	update(dt) {
+	p_update(dt) {
 		if (this.keysDown["w"]) {
 			this.acceleration.y = -1;
 		} else if (this.keysDown["s"]) {
@@ -33,16 +33,6 @@ export default class Player extends Tank {
 			this.acceleration.x = 0;
 		}
 
-		this.velocity.add(this.acceleration);
-		this.velocity.limit(this.maxSpeed);
-		this.position.add(this.velocity);
-		// decrease velocity
-		this.velocity.mult(0.9);
-		if (this.velocity.mag() < 0.1) {
-			this.velocity.x = 0;
-			this.velocity.y = 0;
-		}
-
-		this.socket.emit("update_pos", this.position);
+		this.socket.emit("update_plr", this.position, this.rotation);
 	}
 }

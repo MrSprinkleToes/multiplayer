@@ -50,4 +50,8 @@ export default class Vector2 {
 			this.mult(max);
 		}
 	}
+
+	angle() {
+		return Math.atan2(this.y, this.x) * 180 / Math.PI;
+	}
 }
